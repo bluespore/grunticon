@@ -46,7 +46,7 @@ module.exports = function( grunt , undefined ) {
             colors: {},
             pngfolder: "png",
             pngpath: "",
-            // template: "",
+            template: "",
             tmpDir: "grunticon-tmp",
             previewTemplate: path.join( __dirname, "..", "example", "preview.hbs" )
         });
@@ -98,7 +98,7 @@ module.exports = function( grunt , undefined ) {
             pngfolder: pngfolder,
             pngpath: config.pngpath,
             customselectors: config.customselectors,
-            // template: path.resolve( config.template ),
+            template: path.resolve( config.template ),
             previewTemplate: path.resolve( config.previewTemplate ),
             noencodepng: true,
             prefix: config.cssprefix
@@ -108,7 +108,7 @@ module.exports = function( grunt , undefined ) {
         var optionsPngEncoded = {
             pngfolder: pngfolder,
             customselectors: config.customselectors,
-            // template: path.resolve( config.template ),
+            template: path.resolve( config.template ),
             previewTemplate: path.resolve( config.previewTemplate ),
             noencodepng: false,
             prefix: config.cssprefix
