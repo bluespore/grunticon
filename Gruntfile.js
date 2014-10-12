@@ -28,7 +28,7 @@ module.exports = function(grunt) {
 				}]
 			}
 		},
-		grunticon: {
+		e7grunticon: {
 			foo: {
 				files: [{
 					expand: true,
@@ -39,9 +39,7 @@ module.exports = function(grunt) {
 				options: {
 
 					// CSS filenames
-					datasvgcss: "icons.data.svg.css",
-					datapngcss: "icons.data.png.css",
-					urlpngcss: "icons.fallback.css",
+					outputfile: "icons.scss",
 
 					// preview HTML filename
 					previewhtml: "preview.html",
@@ -53,7 +51,7 @@ module.exports = function(grunt) {
 					pngfolder: "png",
 
 					// prefix for CSS classnames
-					cssprefix: ".icon-",
+					cssprefix: ".i--",
 
 					defaultWidth: "300px",
 					defaultHeight: "200px",
@@ -72,7 +70,7 @@ module.exports = function(grunt) {
 						"gummy-bears-2" : ["nav li a.deadly-bears:before"]
 					},
 
-					template: "example/default-css.hbs",
+					// template: "example/default-css.hbs",
 					previewTemplate: "example/preview-custom.hbs"
 
 				}
@@ -103,8 +101,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks( 'grunt-svgmin' );
 
 	// Default task.
-	grunt.registerTask('skip-tests', ['jshint', 'grunticon:foo']);
-	grunt.registerTask('travis', ['jshint', 'svgmin', 'grunticon:foo', 'nodeunit']);
+	grunt.registerTask('skip-tests', ['jshint', 'e7grunticon:foo']);
+	grunt.registerTask('travis', ['jshint', 'svgmin', 'e7grunticon:foo', 'nodeunit']);
 	grunt.registerTask('default', ['travis']);
 
 };
