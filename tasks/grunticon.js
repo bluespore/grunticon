@@ -43,6 +43,7 @@ module.exports = function( grunt , undefined ) {
             cssprefix: ".i--",
             defaultWidth: "400px",
             defaultHeight: "300px",
+            generateClasses: false,
             colors: {},
             pngfolder: "png",
             pngpath: "",
@@ -51,11 +52,12 @@ module.exports = function( grunt , undefined ) {
             previewTemplate: path.join( __dirname, "..", "example", "preview.hbs" )
         });
 
-        // just a quick starting message
+        // Start message
         grunt.log.writeln( "Look, it's a grunticon!" );
 
+        // Check for SVG files
         var files = this.files.filter( function( file ){
-            return file.src[0].match( /png|svg/ );
+            return file.src[0].match( /svg/ );
         });
         if( files.length === 0 ){
             grunt.log.writeln( "Grunticon has no files to read!" );
@@ -115,12 +117,14 @@ module.exports = function( grunt , undefined ) {
         };
 
         grunt.log.writeln("Coloring SVG files");
+
         // create the tmp directory
         var tmp = path.join( os.tmpDir(), config.tmpDir );
         if( grunt.file.exists( tmp ) ){
             fs.removeSync( tmp );
         }
         grunt.file.mkdir( tmp );
+
         var colorFiles;
         try{
             var dc = new DirectoryColorfy( config.src, tmp, {
@@ -155,7 +159,8 @@ module.exports = function( grunt , undefined ) {
                 path.join( config.dest, config.outputfile ),
                 optionsPng,
                 optionsPngEncoded,
-                tmp
+                tmp,
+                config.generateClasses
             );
 
             grunt.log.writeln("Writing CSS");

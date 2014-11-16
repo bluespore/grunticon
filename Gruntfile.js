@@ -53,8 +53,10 @@ module.exports = function(grunt) {
 					// prefix for CSS classnames
 					cssprefix: ".i--",
 
-					defaultWidth: "300px",
-					defaultHeight: "200px",
+					// defaultWidth: "300px",
+					// defaultHeight: "200px",
+
+                    generateClasses: false,
 
 					// define vars that can be used in filenames if desirable, like foo.colors-primary-secondary.svg
 					colors: {
