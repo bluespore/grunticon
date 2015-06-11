@@ -69,6 +69,7 @@ module.exports = function( grunt , undefined ) {
 
         config.src = this.files[0].orig.cwd;
         config.dest = this.files[0].orig.dest;
+        config.pngUrl = this.files[0].orig.pngUrl;
 
         if( !config.dest || config.dest && config.dest === "" ){
             grunt.fatal("The destination must be a directory");
@@ -155,7 +156,8 @@ module.exports = function( grunt , undefined ) {
                 path.join( config.dest, config.outputfile ),
                 optionsPng,
                 optionsPngEncoded,
-                tmp
+                tmp,
+                config.pngUrl
             );
 
             grunt.log.writeln("Writing CSS");
